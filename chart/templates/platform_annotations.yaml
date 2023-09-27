@@ -1,0 +1,45 @@
+{{- if .Values.policies.checkPlatformAnnotation.enable }}
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: valid-platform-annotation
+  annotations:
+    policies.kyverno.io/title: Correct Platform Annotation
+    policies.kyverno.io/category: AtomiCloud Best Practices
+    policies.kyverno.io/severity: low
+    policies.kyverno.io/subject: Pod, Annotation
+    pod-policies.kyverno.io/autogen-controllers: none
+    policies.kyverno.io/description: >-
+      Platform Annotation needs to be one of {{ join ", " .Values.policies.checkPlatformAnnotation.acceptedValues }}.
+spec:
+  validationFailureAction: {{ index .Values "kyverno-policies" "validationFailureAction" }}
+  background: true
+  rules:
+    - name: valid-platform-annotation
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.checkPlatformAnnotation.exclude.namespaces }}
+              {{ .Values.policies.checkPlatformAnnotation.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.checkPlatformAnnotation.exclude.names }}
+          - resources:
+              names:
+              {{ .Values.policies.checkPlatformAnnotation.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The annotation `atomi.cloud/platform` is incorrect. Expected of one '{{ join ", " .Values.policies.checkPlatformAnnotation.acceptedValues }}' but got '{{ `{{request.object.metadata.annotations.\"atomi.cloud/platform\"}}` }}'"
+        deny:
+          conditions:
+            all:
+              - key: "{{ `{{ regex_match('^(` }}{{ join "|" .Values.policies.checkPlatformAnnotation.acceptedValues }}{{- `)$','{{request.object.metadata.annotations.\"atomi.cloud/platform\" || 'empty'}}') }}`}}"
+                operator: Equals
+                value: false
+{{- end }}

@@ -1,0 +1,72 @@
+{{- if .Values.policies.disallowLatestTag.enable }}
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-latest-tag
+  annotations:
+    policies.kyverno.io/title: Disallow Latest Tag
+    policies.kyverno.io/category: Best Practices
+    policies.kyverno.io/minversion: 1.6.0
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      The ':latest' tag is mutable and can lead to unexpected errors if the
+      image changes. A best practice is to use an immutable tag that maps to
+      a specific version of an application Pod. This policy validates that the image
+      specifies a tag and that it is not called `latest`.
+spec:
+  validationFailureAction: {{ index .Values "kyverno-policies" "validationFailureAction" }}
+  background: true
+  rules:
+    - name: require-image-tag
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      validate:
+        message: "An image tag is required."
+        pattern:
+          spec:
+            containers:
+              - image: "*:*"
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.disallowLatestTag.exclude.namespaces }}
+              {{ .Values.policies.disallowLatestTag.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.disallowLatestTag.exclude.names }}
+          - resources:
+              names:
+              {{ .Values.policies.disallowLatestTag.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+    - name: validate-image-tag
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.disallowLatestTag.exclude.namespaces }}
+              {{ .Values.policies.disallowLatestTag.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.disallowLatestTag.exclude.names }}
+          - resources:
+              names:
+              {{ .Values.policies.disallowLatestTag.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "Using a mutable image tag e.g. 'latest' is not allowed."
+        pattern:
+          spec:
+            containers:
+              - image: "!*:latest"
+
+{{- end }}

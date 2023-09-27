@@ -1,0 +1,148 @@
+{{- if .Values.policies.requireAtomiCloudAnnotations.enable }}
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-atomi-annotations
+  annotations:
+    policies.kyverno.io/title: Require AtomiCloud Annotations
+    policies.kyverno.io/category: AtomiCloud Best Practices
+    policies.kyverno.io/severity: low
+    policies.kyverno.io/subject: Pod, Annotation
+    pod-policies.kyverno.io/autogen-controllers: none
+    policies.kyverno.io/description: >-
+      Require all pods to follow atomi.cloud annotations which includes:
+      - atomi.cloud/landscape    - L of LPSM
+      - atomi.cloud/platform     - P of LPSM
+      - atomi.cloud/service      - S of LPSM
+      - atomi.cloud/module       - D of LPSM
+      - atomi.cloud/layer        - Layer of the application
+spec:
+  validationFailureAction: {{ index .Values "kyverno-policies" "validationFailureAction" }}
+  background: true
+  rules:
+    - name: check-for-landscape-annotation
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudAnnotations.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.names }}
+          - resources:
+              names:
+              {{ .Values.policies.requireAtomiCloudAnnotations.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The annotation `atomi.cloud/landscape` is required."
+        pattern:
+          metadata:
+            annotations:
+              atomi.cloud/landscape: "?*"
+    - name: check-for-service-annotation
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudAnnotations.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudAnnotations.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The annotation `atomi.cloud/service` is required."
+        pattern:
+          metadata:
+            annotations:
+              atomi.cloud/service: "?*"
+    - name: check-for-platform-annotation
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudAnnotations.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudAnnotations.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The annotation `atomi.cloud/platform` is required."
+        pattern:
+          metadata:
+            annotations:
+              atomi.cloud/platform: "?*"
+    - name: check-for-module-annotation
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+                {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.namespaces }}
+                {{ .Values.policies.requireAtomiCloudAnnotations.exclude.namespaces | toYaml | nindent 16 }}
+                {{- end }}
+          {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudAnnotations.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The annotation `atomi.cloud/module` is required."
+        pattern:
+          metadata:
+            annotations:
+              atomi.cloud/module: "?*"
+    - name: check-for-layer-annotation
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudAnnotations.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudAnnotations.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudAnnotations.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The annotation `atomi.cloud/layer` is required."
+        pattern:
+          metadata:
+            annotations:
+              atomi.cloud/layer: "?*"
+{{- end }}

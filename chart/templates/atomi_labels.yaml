@@ -1,0 +1,174 @@
+{{- if .Values.policies.requireAtomiCloudLabels.enable }}
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-atomi-labels
+  annotations:
+    policies.kyverno.io/title: Require AtomiCloud Labels
+    policies.kyverno.io/category: AtomiCloud Best Practices
+    policies.kyverno.io/severity: low
+    policies.kyverno.io/subject: Pod, Label
+    pod-policies.kyverno.io/autogen-controllers: none
+    policies.kyverno.io/description: >-
+      Require all pods to follow atomi.cloud annotations which includes:
+      - atomi.cloud/landscape    - L of LPSM
+      - atomi.cloud/platform     - P of LPSM
+      - atomi.cloud/service      - S of LPSM
+      - atomi.cloud/module       - D of LPSM
+      - atomi.cloud/layer        - Layer of the application
+spec:
+  validationFailureAction: {{ index .Values "kyverno-policies" "validationFailureAction" }}
+  background: true
+  rules:
+    - name: check-for-landscape-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudLabels.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudLabels.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudLabels.exclude.names }}
+          - resources:
+              names:
+              {{ .Values.policies.requireAtomiCloudLabels.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The label `atomi.cloud/landscape` is required."
+
+        pattern:
+          metadata:
+            labels:
+              atomi.cloud/landscape: "?*"
+    - name: check-for-service-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudLabels.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudLabels.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudLabels.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudLabels.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The label `atomi.cloud/service` is required."
+        pattern:
+          metadata:
+            labels:
+              atomi.cloud/service: "?*"
+    - name: check-for-platform-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudLabels.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudLabels.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudLabels.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudLabels.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The label `atomi.cloud/platform` is required."
+        pattern:
+          metadata:
+            labels:
+              atomi.cloud/platform: "?*"
+    - name: check-for-module-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+                {{- if.Values.policies.requireAtomiCloudLabels.exclude.namespaces }}
+                {{ .Values.policies.requireAtomiCloudLabels.exclude.namespaces | toYaml | nindent 16 }}
+                {{- end }}
+          {{- if.Values.policies.requireAtomiCloudLabels.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudLabels.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The label `atomi.cloud/module` is required."
+        pattern:
+          metadata:
+            labels:
+              atomi.cloud/designation: "?*"
+    - name: check-for-layer-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.requireAtomiCloudLabels.exclude.namespaces }}
+              {{ .Values.policies.requireAtomiCloudLabels.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.requireAtomiCloudLabels.exclude.names }}
+          - resources:
+              names:
+            {{ .Values.policies.requireAtomiCloudLabels.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The label `atomi.cloud/layer` is required."
+        pattern:
+          metadata:
+            labels:
+              atomi.cloud/layer: "?*"
+    - name: check-for-team-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+                {{- if.Values.policies.requireAtomiCloudLabels.exclude.namespaces }}
+                {{ .Values.policies.requireAtomiCloudLabels.exclude.namespaces | toYaml | nindent 16 }}
+                {{- end }}
+            {{- if.Values.policies.requireAtomiCloudLabels.exclude.names }}
+          - resources:
+              names:
+                {{ .Values.policies.requireAtomiCloudLabels.exclude.names | toYaml | nindent 16 }}
+            {{- end }}
+      validate:
+        message: "The label `atomi.cloud/team` is required."
+        pattern:
+          metadata:
+            labels:
+              atomi.cloud/layer: "?*"
+{{- end }}

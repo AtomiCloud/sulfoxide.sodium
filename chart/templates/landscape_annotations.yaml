@@ -1,0 +1,45 @@
+{{- if .Values.policies.checkLandscapeAnnotation.enable }}
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: correct-landscape-annotation
+  annotations:
+    policies.kyverno.io/title: Correct Landscape Annotation
+    policies.kyverno.io/category: AtomiCloud Best Practices
+    policies.kyverno.io/severity: low
+    policies.kyverno.io/subject: Pod, Annotation
+    pod-policies.kyverno.io/autogen-controllers: none
+    policies.kyverno.io/description: >-
+      Landscape Annotation needs to be set to the correct value.
+spec:
+  validationFailureAction: {{ index .Values "kyverno-policies" "validationFailureAction" }}
+  background: true
+  rules:
+    - name: check-for-landscape-annotation
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      exclude:
+        any:
+          - resources:
+              namespaces:
+              {{ .Values.globalExcludedNamespace | toYaml | nindent 16 }}
+              {{- if.Values.policies.checkLandscapeAnnotation.exclude.namespaces }}
+              {{ .Values.policies.checkLandscapeAnnotation.exclude.namespaces | toYaml | nindent 16 }}
+              {{- end }}
+          {{- if.Values.policies.checkLandscapeAnnotation.exclude.names }}
+          - resources:
+              names:
+              {{ .Values.policies.checkLandscapeAnnotation.exclude.names | toYaml | nindent 16 }}
+          {{- end }}
+      validate:
+        message: "The annotation `atomi.cloud/landscape` is incorrect. Expected '{{.Values.policies.checkLandscapeAnnotation.value}}' but got '{{ `{{request.object.metadata.annotations.\"atomi.cloud/landscape\"}}` }}'"
+        deny:
+          conditions:
+            all:
+              - key: "{{ `{{ regex_match('^` }}{{.Values.policies.checkLandscapeAnnotation.value}}{{- `$','{{request.object.metadata.annotations.\"atomi.cloud/landscape\" || 'empty'}}') }}`}}"
+                operator: Equals
+                value: false
+{{- end }}
