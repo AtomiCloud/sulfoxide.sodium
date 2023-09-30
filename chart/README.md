@@ -8,7 +8,7 @@ Chart to install AtomiCloud's Cluster Policies
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://kyverno.github.io/kyverno/ | kyverno-policies | 2.7.5 |
+| https://kyverno.github.io/kyverno/ | kyverno-policies | 3.0.4 |
 
 ## Values
 

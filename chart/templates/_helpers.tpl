@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "atomi-policies.name" -}}
+{{- define "sulfoxide-sodium.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "atomi-policies.fullname" -}}
+{{- define "sulfoxide-sodium.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,19 +26,19 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "atomi-policies.chart" -}}
+{{- define "sulfoxide-sodium.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "atomi-policies.labels" -}}
-helm.sh/chart: {{ include "atomi-policies.chart" . }}
+{{- define "sulfoxide-sodium.labels" -}}
+helm.sh/chart: {{ include "sulfoxide-sodium.chart" . }}
 {{- range $k, $v := .Values.serviceTree }}
 "atomi.cloud/{{ $k }}": "{{ $v }}"
 {{- end }}
-{{ include "atomi-policies.selectorLabels" . }}
+{{ include "sulfoxide-sodium.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -48,8 +48,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Common annotations
 */}}
-{{- define "atomi-policies.annotations" -}}
-helm.sh/chart: {{ include "atomi-policies.chart" . }}
+{{- define "sulfoxide-sodium.annotations" -}}
+helm.sh/chart: {{ include "sulfoxide-sodium.chart" . }}
 {{- range $k, $v := .Values.serviceTree }}
 "atomi.cloud/{{ $k }}": "{{ $v }}"
 {{- end }}
@@ -58,17 +58,17 @@ helm.sh/chart: {{ include "atomi-policies.chart" . }}
 {{/*
 Selector labels
 */}}
-{{- define "atomi-policies.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "atomi-policies.name" . }}
+{{- define "sulfoxide-sodium.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "sulfoxide-sodium.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "atomi-policies.serviceAccountName" -}}
+{{- define "sulfoxide-sodium.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "atomi-policies.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "sulfoxide-sodium.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

@@ -1,9 +1,10 @@
 version: "3"
 
 env:
-  RELEASE_NAME: policies
+  RELEASE_NAME: sulfoxide-sodium
 
 includes:
+  util: tasks/Taskfile.util.yaml
   pichu:opal:
     taskfile: tasks/Taskfile.cluster.yaml
     vars:
@@ -28,3 +29,12 @@ tasks:
     dir: chart
     cmds:
       - helm dependency update
+
+  latest:
+    desc: Get the latest version of Kyverno Policies
+    cmds:
+      - task: util:latest
+        vars:
+          REPO_NAME: kyvnerno
+          REPO_URL: https://kyverno.github.io/kyverno
+          CHART_NAME: kyverno-policies
