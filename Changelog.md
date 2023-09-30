@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.1.0...v1.1.1) (2023-09-30)
+
+
+### 🐛 Bug Fixes
+
+* change cluster render to cluster template ([2aa4d1b](https://github.com/AtomiCloud/sulfoxide.sodium/commit/2aa4d1bfd6526d49f0156607f340dbf71988f831))
+
 ## [1.1.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.0.1...v1.1.0) (2023-09-30)
 
 
