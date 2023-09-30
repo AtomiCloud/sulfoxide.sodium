@@ -3,7 +3,8 @@ apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: disallow-container-sock-mounts
-  annotations:
+  labels: {{- include "sulfoxide-sodium.labels" . | nindent 4 }}
+  annotations: {{- include "sulfoxide-sodium.annotations" . | nindent 4 }}
     policies.kyverno.io/title: Disallow CRI socket mounts
     policies.kyverno.io/category: Best Practices
     policies.kyverno.io/severity: medium

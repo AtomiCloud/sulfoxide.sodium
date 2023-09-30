@@ -1,17 +1,18 @@
+# -- AtomiCloud Service Tree. See [ServiceTree](https://atomicloud.larksuite.com/wiki/OkfJwTXGFiMJkrk6W3RuwRrZs64?theme=DARK&contentTheme=DARK#MHw5d76uDo2tBLx86cduFQMRsBb)
 serviceTree:
-  landscape: pichu
-  platform: systems
-  service: policy-engine
+  platform: sulfoxide
+  service: sodium
   module: policies
   layer: "1"
 
+# -- Official Kyverno Policies. See [Kyverno Policies](https://github.com/kyverno/kyverno/tree/main/charts/kyverno-policies)
 kyverno-policies:
   podSecurityStandard: baseline
-  #  includeRestrictedPolicies:
-  #    - disallow-privilege-escalation
-  #    - require-run-as-non-root-user
-  #    - require-run-as-nonroot
-  #    - restrict-volume-types
+  includeRestrictedPolicies:
+    - disallow-privilege-escalation
+    - require-run-as-non-root-user
+    - require-run-as-nonroot
+    - restrict-volume-types
   podSecuritySeverity: medium
   validationFailureAction: Audit
   policyExclude:
@@ -100,74 +101,132 @@ kyverno-policies:
         - resources:
             namespaces:
               - kube-system
+
+landscape: &landscape lapras
+platforms: &platforms
+  - sulfoxide
+  - sulfone
+  - amide
+  - alkene
+  - carboxlic-acid
+
+commonExclude:
+  annotaions: &annotationExclude
+    - kyverno-cleanup-controller-*
+  labels: &labelExclude
+    - kyverno-cleanup-controller-*
+
+
+# -- Namespace to exclude globally
 globalExcludedNamespace:
   - kube-system
 
+# -- Configure Policies
 policies:
+  # -- Require annotations in AtomiCloud's Service tree
   requireAtomiCloudAnnotations:
+    # -- Enable this policy
     enable: true
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *annotationExclude
+
+  # -- Require labels in AtomiCloud's Service tree
   requireAtomiCloudLabels:
+    # -- Enable this policy
     enable: true
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *labelExclude
+
+  # -- Check if landscape label (atomi.cloud/landscape) value is correct
   checkLandscapeLabel:
+    # -- Enable this policy
     enable: true
-    value: pichu
+    # -- The correct landscape value
+    value: *landscape
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *labelExclude
+
+  # -- Check if landscape annotation (atomi.cloud/landscape) value is correct
   checkLandscapeAnnotation:
+    # -- Enable this policy
     enable: true
-    value: pichu
+    # -- The correct landscape value
+    value: *landscape
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *annotationExclude
+
+  # -- Check if layer label (atomi.cloud/layer) value is between 0 - 2
   checkLayerLabel:
+    # -- Enable this policy
     enable: true
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *labelExclude
+
+  # -- Check if layer annotation (atomi.cloud/layer) value is between 0 - 2
   checkLayerAnnotation:
+    # -- Enable this policy
     enable: true
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *annotationExclude
+
+  # -- Check if platform label (atomi.cloud/platform) value is correct
   checkPlatformLabel:
+    # -- Enable this policy
     enable: true
-    acceptedValues:
-      - systems
-      - amide
-      - alkene
+    # -- The correct platform value
+    acceptedValues: *platforms
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *labelExclude
+  # -- Check if platform annotation (atomi.cloud/platform) value is correct
   checkPlatformAnnotation:
+    # -- Enable this policy
     enable: true
-    acceptedValues:
-      - systems
-      - amide
-      - alkene
+    # -- The correct platform value
+    acceptedValues: *platforms
+    # -- Exclusion rules
     exclude:
-      names:
-        - kyverno-cleanup-controller-*
+      names: *annotationExclude
+
+  # -- Prevent CRI Sock Mount
   disableCriSockMount:
+    # -- Enable this policy
     enable: true
+    # -- Exclusion rules
     exclude: { }
+
+  # -- Disallow empty ingress
   disallowEmptyIngress:
+    # -- Enable this policy
     enable: true
+    # -- Exclusion rules
     exclude: { }
+
+  # -- Disallow latest tag for docker images
   disallowLatestTag:
+    # -- Enable this policy
     enable: true
-    exclude: {}
-  disallowNodePorts:
-    enable: true
+    # -- Exclusion rules
     exclude: { }
-  requireRequestLimits:
+
+  # -- Disallow node ports
+  disallowNodePorts:
+    # -- Enable this policy
     enable: true
+    # -- Exclusion rules
+    exclude: { }
+
+  # -- Require pods to have request and limits
+  requireRequestLimits:
+    # -- Enable this policy
+    enable: true
+    # -- Exclusion rules
     exclude:
       names:
         - otel-target-allocator-targetallocator-*

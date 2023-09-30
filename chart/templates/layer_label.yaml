@@ -3,14 +3,15 @@ apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: valid-layer-label
-  annotations:
+  labels: {{- include "sulfoxide-sodium.labels" . | nindent 4 }}
+  annotations: {{- include "sulfoxide-sodium.annotations" . | nindent 4 }}
     policies.kyverno.io/title: Valid Layer Label
     policies.kyverno.io/category: AtomiCloud Best Practices
     policies.kyverno.io/severity: low
     policies.kyverno.io/subject: Pod, Label
     pod-policies.kyverno.io/autogen-controllers: none
     policies.kyverno.io/description: >-
-      Layer Label needs to be between 1 and 4
+      Layer Label needs to be between 0 and 2
 spec:
   validationFailureAction: {{ index .Values "kyverno-policies" "validationFailureAction" }}
   background: true
@@ -35,11 +36,11 @@ spec:
               {{ .Values.policies.checkLayerLabel.exclude.names | toYaml | nindent 16 }}
           {{- end }}
       validate:
-        message: "The label `atomi.cloud/layer` needs to be between 1 and 4, but got '{{ `{{request.object.metadata.labels.\"atomi.cloud/layer\"}}` }}'"
+        message: "The label `atomi.cloud/layer` needs to be between 0 and 2, but got '{{ `{{request.object.metadata.labels.\"atomi.cloud/layer\"}}` }}'"
         deny:
           conditions:
             all:
-              - key: "{{ `{{ regex_match('^[1-4]$','{{request.object.metadata.labels.\"atomi.cloud/layer\" || 'empty'}}') }}`}}"
+              - key: "{{ `{{ regex_match('^[0-2]$','{{request.object.metadata.labels.\"atomi.cloud/layer\" || 'empty'}}') }}`}}"
                 operator: Equals
                 value: false
 {{- end }}

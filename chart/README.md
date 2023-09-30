@@ -14,67 +14,61 @@ Chart to install AtomiCloud's Cluster Policies
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| globalExcludedNamespace[0] | string | `"kube-system"` |  |
-| kyverno-policies.podSecuritySeverity | string | `"medium"` |  |
-| kyverno-policies.podSecurityStandard | string | `"baseline"` |  |
-| kyverno-policies.policyExclude.disallow-capabilities.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-host-namespaces.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-host-path.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-host-path.any[1].resources.names[0] | string | `"otel-container-logs-collector*"` |  |
-| kyverno-policies.policyExclude.disallow-host-path.any[1].resources.namespaces[0] | string | `"otel"` |  |
-| kyverno-policies.policyExclude.disallow-host-ports.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-host-process.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-privilege-escalation.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-privileged-containers.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-proc-mount.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.disallow-selinux.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.require-run-as-non-root-user.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.require-run-as-nonroot.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.restrict-apparmor-profiles.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.restrict-seccomp-strict.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.restrict-seccomp.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.restrict-sysctls.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.policyExclude.restrict-volume-types.any[0].resources.namespaces[0] | string | `"kube-system"` |  |
-| kyverno-policies.validationFailureAction | string | `"Audit"` |  |
-| policies.checkLandscapeAnnotation.enable | bool | `true` |  |
-| policies.checkLandscapeAnnotation.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.checkLandscapeAnnotation.value | string | `"pichu"` |  |
-| policies.checkLandscapeLabel.enable | bool | `true` |  |
-| policies.checkLandscapeLabel.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.checkLandscapeLabel.value | string | `"pichu"` |  |
-| policies.checkLayerAnnotation.enable | bool | `true` |  |
-| policies.checkLayerAnnotation.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.checkLayerLabel.enable | bool | `true` |  |
-| policies.checkLayerLabel.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.checkPlatformAnnotation.acceptedValues[0] | string | `"systems"` |  |
-| policies.checkPlatformAnnotation.acceptedValues[1] | string | `"amide"` |  |
-| policies.checkPlatformAnnotation.acceptedValues[2] | string | `"alkene"` |  |
-| policies.checkPlatformAnnotation.enable | bool | `true` |  |
-| policies.checkPlatformAnnotation.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.checkPlatformLabel.acceptedValues[0] | string | `"systems"` |  |
-| policies.checkPlatformLabel.acceptedValues[1] | string | `"amide"` |  |
-| policies.checkPlatformLabel.acceptedValues[2] | string | `"alkene"` |  |
-| policies.checkPlatformLabel.enable | bool | `true` |  |
-| policies.checkPlatformLabel.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.disableCriSockMount.enable | bool | `true` |  |
-| policies.disableCriSockMount.exclude | object | `{}` |  |
-| policies.disallowEmptyIngress.enable | bool | `true` |  |
-| policies.disallowEmptyIngress.exclude | object | `{}` |  |
-| policies.disallowLatestTag.enable | bool | `true` |  |
-| policies.disallowLatestTag.exclude | object | `{}` |  |
-| policies.disallowNodePorts.enable | bool | `true` |  |
-| policies.disallowNodePorts.exclude | object | `{}` |  |
-| policies.requireAtomiCloudAnnotations.enable | bool | `true` |  |
-| policies.requireAtomiCloudAnnotations.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.requireAtomiCloudLabels.enable | bool | `true` |  |
-| policies.requireAtomiCloudLabels.exclude.names[0] | string | `"kyverno-cleanup-controller-*"` |  |
-| policies.requireRequestLimits.enable | bool | `true` |  |
-| policies.requireRequestLimits.exclude.names[0] | string | `"otel-target-allocator-targetallocator-*"` |  |
-| serviceTree.landscape | string | `"pichu"` |  |
-| serviceTree.layer | string | `"1"` |  |
-| serviceTree.module | string | `"policies"` |  |
-| serviceTree.platform | string | `"systems"` |  |
-| serviceTree.service | string | `"policy-engine"` |  |
+| commonExclude.annotaions[0] | string | `"kyverno-cleanup-controller-*"` |  |
+| commonExclude.labels[0] | string | `"kyverno-cleanup-controller-*"` |  |
+| globalExcludedNamespace | list | `["kube-system"]` | Namespace to exclude globally |
+| kyverno-policies | object | `{"includeRestrictedPolicies":["disallow-privilege-escalation","require-run-as-non-root-user","require-run-as-nonroot","restrict-volume-types"],"podSecuritySeverity":"medium","podSecurityStandard":"baseline","policyExclude":{"disallow-capabilities":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"disallow-host-namespaces":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"disallow-host-path":{"any":[{"resources":{"namespaces":["kube-system"]}},{"resources":{"names":["otel-container-logs-collector*"],"namespaces":["otel"]}}]},"disallow-host-ports":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"disallow-host-process":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"disallow-privilege-escalation":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"disallow-privileged-containers":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"disallow-proc-mount":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"disallow-selinux":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"require-run-as-non-root-user":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"require-run-as-nonroot":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"restrict-apparmor-profiles":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"restrict-seccomp":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"restrict-seccomp-strict":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"restrict-sysctls":{"any":[{"resources":{"namespaces":["kube-system"]}}]},"restrict-volume-types":{"any":[{"resources":{"namespaces":["kube-system"]}}]}},"validationFailureAction":"Audit"}` | Official Kyverno Policies. See [Kyverno Policies](https://github.com/kyverno/kyverno/tree/main/charts/kyverno-policies) |
+| landscape | string | `"lapras"` |  |
+| platforms[0] | string | `"sulfoxide"` |  |
+| platforms[1] | string | `"sulfone"` |  |
+| platforms[2] | string | `"amide"` |  |
+| platforms[3] | string | `"alkene"` |  |
+| platforms[4] | string | `"carboxlic-acid"` |  |
+| policies | object | `{"checkLandscapeAnnotation":{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]},"value":"lapras"},"checkLandscapeLabel":{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]},"value":"lapras"},"checkLayerAnnotation":{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}},"checkLayerLabel":{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}},"checkPlatformAnnotation":{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}},"checkPlatformLabel":{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}},"disableCriSockMount":{"enable":true,"exclude":{}},"disallowEmptyIngress":{"enable":true,"exclude":{}},"disallowLatestTag":{"enable":true,"exclude":{}},"disallowNodePorts":{"enable":true,"exclude":{}},"requireAtomiCloudAnnotations":{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}},"requireAtomiCloudLabels":{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}},"requireRequestLimits":{"enable":true,"exclude":{"names":["otel-target-allocator-targetallocator-*"]}}}` | Configure Policies |
+| policies.checkLandscapeAnnotation | object | `{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]},"value":"lapras"}` | Check if landscape annotation (atomi.cloud/landscape) value is correct |
+| policies.checkLandscapeAnnotation.enable | bool | `true` | Enable this policy |
+| policies.checkLandscapeAnnotation.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.checkLandscapeAnnotation.value | string | `"lapras"` | The correct landscape value |
+| policies.checkLandscapeLabel | object | `{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]},"value":"lapras"}` | Check if landscape label (atomi.cloud/landscape) value is correct |
+| policies.checkLandscapeLabel.enable | bool | `true` | Enable this policy |
+| policies.checkLandscapeLabel.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.checkLandscapeLabel.value | string | `"lapras"` | The correct landscape value |
+| policies.checkLayerAnnotation | object | `{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}}` | Check if layer annotation (atomi.cloud/layer) value is between 0 - 2 |
+| policies.checkLayerAnnotation.enable | bool | `true` | Enable this policy |
+| policies.checkLayerAnnotation.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.checkLayerLabel | object | `{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}}` | Check if layer label (atomi.cloud/layer) value is between 0 - 2 |
+| policies.checkLayerLabel.enable | bool | `true` | Enable this policy |
+| policies.checkLayerLabel.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.checkPlatformAnnotation | object | `{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}}` | Check if platform annotation (atomi.cloud/platform) value is correct |
+| policies.checkPlatformAnnotation.acceptedValues | list | `["sulfoxide","sulfone","amide","alkene","carboxlic-acid"]` | The correct platform value |
+| policies.checkPlatformAnnotation.enable | bool | `true` | Enable this policy |
+| policies.checkPlatformAnnotation.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.checkPlatformLabel | object | `{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}}` | Check if platform label (atomi.cloud/platform) value is correct |
+| policies.checkPlatformLabel.acceptedValues | list | `["sulfoxide","sulfone","amide","alkene","carboxlic-acid"]` | The correct platform value |
+| policies.checkPlatformLabel.enable | bool | `true` | Enable this policy |
+| policies.checkPlatformLabel.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.disableCriSockMount | object | `{"enable":true,"exclude":{}}` | Prevent CRI Sock Mount |
+| policies.disableCriSockMount.enable | bool | `true` | Enable this policy |
+| policies.disableCriSockMount.exclude | object | `{}` | Exclusion rules |
+| policies.disallowEmptyIngress | object | `{"enable":true,"exclude":{}}` | Disallow empty ingress |
+| policies.disallowEmptyIngress.enable | bool | `true` | Enable this policy |
+| policies.disallowEmptyIngress.exclude | object | `{}` | Exclusion rules |
+| policies.disallowLatestTag | object | `{"enable":true,"exclude":{}}` | Disallow latest tag for docker images |
+| policies.disallowLatestTag.enable | bool | `true` | Enable this policy |
+| policies.disallowLatestTag.exclude | object | `{}` | Exclusion rules |
+| policies.disallowNodePorts | object | `{"enable":true,"exclude":{}}` | Disallow node ports |
+| policies.disallowNodePorts.enable | bool | `true` | Enable this policy |
+| policies.disallowNodePorts.exclude | object | `{}` | Exclusion rules |
+| policies.requireAtomiCloudAnnotations | object | `{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}}` | Require annotations in AtomiCloud's Service tree |
+| policies.requireAtomiCloudAnnotations.enable | bool | `true` | Enable this policy |
+| policies.requireAtomiCloudAnnotations.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.requireAtomiCloudLabels | object | `{"enable":true,"exclude":{"names":["kyverno-cleanup-controller-*"]}}` | Require labels in AtomiCloud's Service tree |
+| policies.requireAtomiCloudLabels.enable | bool | `true` | Enable this policy |
+| policies.requireAtomiCloudLabels.exclude | object | `{"names":["kyverno-cleanup-controller-*"]}` | Exclusion rules |
+| policies.requireRequestLimits | object | `{"enable":true,"exclude":{"names":["otel-target-allocator-targetallocator-*"]}}` | Require pods to have request and limits |
+| policies.requireRequestLimits.enable | bool | `true` | Enable this policy |
+| policies.requireRequestLimits.exclude | object | `{"names":["otel-target-allocator-targetallocator-*"]}` | Exclusion rules |
+| serviceTree | object | `{"layer":"1","module":"policies","platform":"sulfoxide","service":"sodium"}` | AtomiCloud Service Tree. See [ServiceTree](https://atomicloud.larksuite.com/wiki/OkfJwTXGFiMJkrk6W3RuwRrZs64?theme=DARK&contentTheme=DARK#MHw5d76uDo2tBLx86cduFQMRsBb) |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.11.1](https://github.com/norwoodj/helm-docs/releases/v1.11.1)

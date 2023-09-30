@@ -1,0 +1,53 @@
+serviceTree:
+  landscape: &landscape lapras
+  cluster: opal
+
+
+commonExclude:
+  annotaions: &annotationExclude
+    - kyverno-cleanup-controller-*
+  labels: &labelExclude
+    - kyverno-cleanup-controller-*
+
+globalExcludedNamespace:
+  - kube-system
+
+policies:
+  requireAtomiCloudAnnotations:
+    exclude:
+      names: *annotationExclude
+
+  requireAtomiCloudLabels:
+    exclude:
+      names: *labelExclude
+
+  checkLandscapeLabel:
+    value: *landscape
+    exclude:
+      names: *labelExclude
+
+  checkLandscapeAnnotation:
+    value: *landscape
+    exclude:
+      names: *annotationExclude
+
+  checkLayerLabel:
+    exclude:
+      names: *labelExclude
+
+  checkLayerAnnotation:
+    exclude:
+      names: *annotationExclude
+
+  checkPlatformLabel:
+    exclude:
+      names: *labelExclude
+
+  checkPlatformAnnotation:
+    exclude:
+      names: *annotationExclude
+
+  requireRequestLimits:
+    exclude:
+      names:
+        - otel-target-allocator-targetallocator-*
