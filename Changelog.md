@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.0.1...v1.1.0) (2023-09-30)
+
+
+### 🚀 New Features
+
+* values.yaml example ([0099aaf](https://github.com/AtomiCloud/sulfoxide.sodium/commit/0099aaf65541810d9d27978606b383bdb49baffb))
+
+
+### 🐛 Bug Fixes
+
+* migrate to sulfoxide-sodium for Chart.yaml and Taskfile.yaml ([ee24102](https://github.com/AtomiCloud/sulfoxide.sodium/commit/ee24102f5c3be596d6f1cf8b8bd976f4f90a6e20))
+
 ## [1.0.1](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.0.0...v1.0.1) (2023-09-27)
 
 
