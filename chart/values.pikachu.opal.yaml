@@ -1,5 +1,5 @@
 serviceTree:
-  landscape: &landscape lapras
+  landscape: &landscape pikachu
   cluster: opal
 
 

@@ -33,9 +33,9 @@ kyverno-policies:
               - kube-system
         - resources:
             namespaces:
-              - otel
+              - sulfoxide
             names:
-              - otel-container-logs-collector*
+              - "*-container-logs-collector*"
     disallow-host-ports:
       any:
         - resources:
@@ -112,9 +112,9 @@ platforms: &platforms
 
 commonExclude:
   annotaions: &annotationExclude
-    - kyverno-cleanup-controller-*
+    - "*-cleanup-controller-*"
   labels: &labelExclude
-    - kyverno-cleanup-controller-*
+    - "*-cleanup-controller-*"
 
 
 # -- Namespace to exclude globally
@@ -229,4 +229,4 @@ policies:
     # -- Exclusion rules
     exclude:
       names:
-        - otel-target-allocator-targetallocator-*
+        - "*-target-allocator-targetallocator-*"
