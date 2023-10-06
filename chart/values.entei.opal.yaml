@@ -1,6 +1,7 @@
 serviceTree:
-  landscape: &landscape pichu
+  landscape: &landscape entei
   cluster: opal
+
 
 commonExclude:
   annotaions: &annotationExclude
@@ -10,6 +11,9 @@ commonExclude:
 
 globalExcludedNamespace:
   - kube-system
+  - pichu
+  - pikachu
+  - raichu
 
 kyverno-policies:
   podSecurityStandard: baseline
