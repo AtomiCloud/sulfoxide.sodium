@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.2.0...v1.3.0) (2023-10-06)
+
+
+### 🚀 New Features
+
+* entei policies ([c6aadc0](https://github.com/AtomiCloud/sulfoxide.sodium/commit/c6aadc0616385af272ce122572b2892a9791d89a))
+
 ## [1.2.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.1.1...v1.2.0) (2023-10-05)
 
 
