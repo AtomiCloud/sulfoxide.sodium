@@ -15,7 +15,7 @@ metadata:
       - atomi.cloud/landscape    - L of LPSM
       - atomi.cloud/platform     - P of LPSM
       - atomi.cloud/service      - S of LPSM
-      - atomi.cloud/module       - D of LPSM
+      - atomi.cloud/module       - M of LPSM
       - atomi.cloud/layer        - Layer of the application
 spec:
   validationFailureAction: {{ index .Values "kyverno-policies" "validationFailureAction" }}
@@ -121,7 +121,7 @@ spec:
         pattern:
           metadata:
             labels:
-              atomi.cloud/designation: "?*"
+              atomi.cloud/module: "?*"
     - name: check-for-layer-label
       match:
         any:
