@@ -8,7 +8,6 @@ commonExclude:
     - "*-cleanup-controller-*"
   labels: &labelExclude
     - "*-cleanup-controller-*"
-
 globalExcludedNamespace:
   - kube-system
 

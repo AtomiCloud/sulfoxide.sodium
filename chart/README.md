@@ -14,6 +14,7 @@ Chart to install AtomiCloud's Cluster Policies
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| basePolicies | bool | `false` |  |
 | commonExclude.annotaions[0] | string | `"*-cleanup-controller-*"` |  |
 | commonExclude.labels[0] | string | `"*-cleanup-controller-*"` |  |
 | globalExcludedNamespace | list | `["kube-system"]` | Namespace to exclude globally |
