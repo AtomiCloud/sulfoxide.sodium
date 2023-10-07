@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.0...v1.3.1) (2023-10-07)
+
+
+### 🐛 Bug Fixes
+
+* designation to module ([0b8f58f](https://github.com/AtomiCloud/sulfoxide.sodium/commit/0b8f58f02d11f1fea5750a3f3481598d685acda4))
+
 ## [1.3.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.2.0...v1.3.0) (2023-10-06)
 
 
