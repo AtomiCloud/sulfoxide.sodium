@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.1...v1.3.2) (2023-10-08)
+
+
+### 🐛 Bug Fixes
+
+* exclude namespace propogate to kyverno policies ([0a5dbbb](https://github.com/AtomiCloud/sulfoxide.sodium/commit/0a5dbbb50c26adc2be76e7b6adb697577bfe2d60))
+
 ## [1.3.1](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.0...v1.3.1) (2023-10-07)
 
 
