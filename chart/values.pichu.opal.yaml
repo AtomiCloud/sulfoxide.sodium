@@ -8,13 +8,83 @@ commonExclude:
   labels: &labelExclude
     - "*-cleanup-controller-*"
 
-globalExcludedNamespace:
+globalExcludedNamespace: &globalExcludedNamespace
   - kube-system
 
 kyverno-policies:
   podSecurityStandard: baseline
   podSecuritySeverity: medium
   validationFailureAction: Audit
+  policyExclude:
+    disallow-capabilities:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    disallow-host-namespaces:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    disallow-host-path:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
+    disallow-host-ports:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    disallow-host-process:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    disallow-privileged-containers:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    disallow-proc-mount:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    disallow-selinux:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    restrict-apparmor-profiles:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    restrict-sysctls:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    restrict-seccomp:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    disallow-privilege-escalation:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    require-run-as-non-root-user:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    require-run-as-nonroot:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    restrict-seccomp-strict:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
+    restrict-volume-types:
+      any:
+        - resources:
+            namespaces: *globalExcludedNamespace
 
 policies:
   requireAtomiCloudAnnotations:

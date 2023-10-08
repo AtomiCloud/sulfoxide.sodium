@@ -5,7 +5,10 @@ serviceTree:
   module: policies
   layer: "1"
 
-basePolicies: false
+# -- Namespace to exclude globally
+globalExcludedNamespace: &globalExcludedNamespace
+  - kube-system
+
 
 # -- Official Kyverno Policies. See [Kyverno Policies](https://github.com/kyverno/kyverno/tree/main/charts/kyverno-policies)
 kyverno-policies:
@@ -21,18 +24,15 @@ kyverno-policies:
     disallow-capabilities:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     disallow-host-namespaces:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     disallow-host-path:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
         - resources:
             namespaces:
               - sulfoxide
@@ -41,68 +41,55 @@ kyverno-policies:
     disallow-host-ports:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     disallow-host-process:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     disallow-privileged-containers:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     disallow-proc-mount:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     disallow-selinux:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     restrict-apparmor-profiles:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     restrict-sysctls:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     restrict-seccomp:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     disallow-privilege-escalation:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     require-run-as-non-root-user:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     require-run-as-nonroot:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     restrict-seccomp-strict:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
     restrict-volume-types:
       any:
         - resources:
-            namespaces:
-              - kube-system
+            namespaces: *globalExcludedNamespace
 
 landscape: &landscape lapras
 platforms: &platforms
@@ -119,9 +106,6 @@ commonExclude:
     - "*-cleanup-controller-*"
 
 
-# -- Namespace to exclude globally
-globalExcludedNamespace:
-  - kube-system
 
 # -- Configure Policies
 policies:
