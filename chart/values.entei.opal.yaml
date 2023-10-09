@@ -73,10 +73,22 @@ kyverno-policies:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
+              - "*-otel*"
+              - "-*ingress-nginx-controller*"
     require-run-as-non-root-user:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
     require-run-as-nonroot:
       any:
         - resources:
@@ -89,7 +101,11 @@ kyverno-policies:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
-
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
 policies:
   requireAtomiCloudAnnotations:
     exclude:
