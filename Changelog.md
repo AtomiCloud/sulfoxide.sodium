@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.2...v1.3.3) (2023-10-09)
+
+
+### 🐛 Bug Fixes
+
+* exclude privilege escalation for otel and nginx ([4dfb5bd](https://github.com/AtomiCloud/sulfoxide.sodium/commit/4dfb5bdd0780898de93fba079502284aaf287047))
+
 ## [1.3.2](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.1...v1.3.2) (2023-10-08)
 
 
