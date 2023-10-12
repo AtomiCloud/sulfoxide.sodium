@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.4...v1.3.5) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* require-non-root for OTEL containers ([c0596a9](https://github.com/AtomiCloud/sulfoxide.sodium/commit/c0596a9e29da0d563f478242c921bf756370f3c4))
+
 ## [1.3.4](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.3...v1.3.4) (2023-10-12)
 
 
