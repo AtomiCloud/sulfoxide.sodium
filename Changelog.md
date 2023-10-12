@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.3...v1.3.4) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* ignore atomi labels and priviledge escalation ([95dcd4a](https://github.com/AtomiCloud/sulfoxide.sodium/commit/95dcd4a3b1f984e31c61c65e5d88dc59773beaec))
+
 ## [1.3.3](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.2...v1.3.3) (2023-10-09)
 
 
