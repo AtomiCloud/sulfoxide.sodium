@@ -96,6 +96,12 @@ kyverno-policies:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
+              - "*-target-allocator-targetallocator-*"
     restrict-seccomp-strict:
       any:
         - resources:
