@@ -8,6 +8,7 @@ commonExclude:
     - "*-cleanup-controller-*"
   labels: &labelExclude
     - "*-cleanup-controller-*"
+    - "*-silicon-*"
 
 globalExcludedNamespace: &globalExcludedNamespace
   - kube-system
@@ -79,7 +80,8 @@ kyverno-policies:
             names:
               - "*-container-logs-collector*"
               - "*-otel*"
-              - "-*ingress-nginx-controller*"
+              - "*ingress-nginx-controller*"
+              - "*-target-allocator-targetallocator-*"
     require-run-as-non-root-user:
       any:
         - resources:
@@ -89,6 +91,7 @@ kyverno-policies:
               - sulfoxide
             names:
               - "*-container-logs-collector*"
+              - "*-target-allocator-targetallocator-*"
     require-run-as-nonroot:
       any:
         - resources:
