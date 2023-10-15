@@ -7,6 +7,7 @@ commonExclude:
     - "*-cleanup-controller-*"
   labels: &labelExclude
     - "*-cleanup-controller-*"
+    - "*-silicon-*"
 
 globalExcludedNamespace: &globalExcludedNamespace
   - kube-system
@@ -69,6 +70,11 @@ kyverno-policies:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-otel*"
     require-run-as-non-root-user:
       any:
         - resources:

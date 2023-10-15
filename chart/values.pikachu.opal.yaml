@@ -70,6 +70,11 @@ kyverno-policies:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-otel*"
     require-run-as-non-root-user:
       any:
         - resources:
