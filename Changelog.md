@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.5...v1.4.0) (2023-10-15)
+
+
+### 🚀 New Features
+
+* new policies for pichu, pikachu and raichu ([1fc0c4b](https://github.com/AtomiCloud/sulfoxide.sodium/commit/1fc0c4bea584af831d81752c1ef0cac20a654449))
+
 ## [1.3.5](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.4...v1.3.5) (2023-10-12)
 
 
