@@ -1,3 +1,15 @@
+## [1.5.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.4.0...v1.5.0) (2023-11-18)
+
+
+### 📦 Upstreams Changes
+
+* kyverno-policies to 3.1.0 ([831fc7b](https://github.com/AtomiCloud/sulfoxide.sodium/commit/831fc7be75f086914ca7736af87e4b4c77807673))
+
+
+### 🚀 New Features
+
+* ruby values ([37668bb](https://github.com/AtomiCloud/sulfoxide.sodium/commit/37668bb9817de91f85bdff2ca24950191a87d31e))
+
 ## [1.4.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.3.5...v1.4.0) (2023-10-15)
 
 
