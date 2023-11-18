@@ -1,6 +1,6 @@
 # atomi-policies
 
-![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.04](https://img.shields.io/badge/AppVersion-3.04-informational?style=flat-square)
+![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.1.0](https://img.shields.io/badge/AppVersion-3.1.0-informational?style=flat-square)
 
 Chart to install AtomiCloud's Cluster Policies
 
@@ -8,7 +8,7 @@ Chart to install AtomiCloud's Cluster Policies
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://kyverno.github.io/kyverno/ | kyverno-policies | 3.0.4 |
+| https://kyverno.github.io/kyverno/ | kyverno-policies | 3.1.0 |
 
 ## Values
 
