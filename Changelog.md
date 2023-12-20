@@ -1,3 +1,10 @@
+## [1.6.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.5.0...v1.6.0) (2023-12-20)
+
+
+### 🚀 New Features
+
+* nitroso platform ([f9c27f2](https://github.com/AtomiCloud/sulfoxide.sodium/commit/f9c27f2a66a29ade2543571566bd7005216fca30))
+
 ## [1.5.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.4.0...v1.5.0) (2023-11-18)
 
 
