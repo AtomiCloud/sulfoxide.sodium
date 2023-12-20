@@ -21,10 +21,11 @@ Chart to install AtomiCloud's Cluster Policies
 | landscape | string | `"lapras"` |  |
 | platforms[0] | string | `"sulfoxide"` |  |
 | platforms[1] | string | `"sulfone"` |  |
-| platforms[2] | string | `"amide"` |  |
-| platforms[3] | string | `"alkene"` |  |
-| platforms[4] | string | `"carboxlic-acid"` |  |
-| policies | object | `{"checkLandscapeAnnotation":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]},"value":"lapras"},"checkLandscapeLabel":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]},"value":"lapras"},"checkLayerAnnotation":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"checkLayerLabel":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"checkPlatformAnnotation":{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"checkPlatformLabel":{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"disableCriSockMount":{"enable":true,"exclude":{}},"disallowEmptyIngress":{"enable":true,"exclude":{}},"disallowLatestTag":{"enable":true,"exclude":{}},"disallowNodePorts":{"enable":true,"exclude":{}},"requireAtomiCloudAnnotations":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"requireAtomiCloudLabels":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"requireRequestLimits":{"enable":true,"exclude":{"names":["*-target-allocator-targetallocator-*"]}}}` | Configure Policies |
+| platforms[2] | string | `"nitroso"` |  |
+| platforms[3] | string | `"amide"` |  |
+| platforms[4] | string | `"alkene"` |  |
+| platforms[5] | string | `"carboxlic-acid"` |  |
+| policies | object | `{"checkLandscapeAnnotation":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]},"value":"lapras"},"checkLandscapeLabel":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]},"value":"lapras"},"checkLayerAnnotation":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"checkLayerLabel":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"checkPlatformAnnotation":{"acceptedValues":["sulfoxide","sulfone","nitroso","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"checkPlatformLabel":{"acceptedValues":["sulfoxide","sulfone","nitroso","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"disableCriSockMount":{"enable":true,"exclude":{}},"disallowEmptyIngress":{"enable":true,"exclude":{}},"disallowLatestTag":{"enable":true,"exclude":{}},"disallowNodePorts":{"enable":true,"exclude":{}},"requireAtomiCloudAnnotations":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"requireAtomiCloudLabels":{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}},"requireRequestLimits":{"enable":true,"exclude":{"names":["*-target-allocator-targetallocator-*"]}}}` | Configure Policies |
 | policies.checkLandscapeAnnotation | object | `{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]},"value":"lapras"}` | Check if landscape annotation (atomi.cloud/landscape) value is correct |
 | policies.checkLandscapeAnnotation.enable | bool | `true` | Enable this policy |
 | policies.checkLandscapeAnnotation.exclude | object | `{"names":["*-cleanup-controller-*"]}` | Exclusion rules |
@@ -39,12 +40,12 @@ Chart to install AtomiCloud's Cluster Policies
 | policies.checkLayerLabel | object | `{"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}}` | Check if layer label (atomi.cloud/layer) value is between 0 - 2 |
 | policies.checkLayerLabel.enable | bool | `true` | Enable this policy |
 | policies.checkLayerLabel.exclude | object | `{"names":["*-cleanup-controller-*"]}` | Exclusion rules |
-| policies.checkPlatformAnnotation | object | `{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}}` | Check if platform annotation (atomi.cloud/platform) value is correct |
-| policies.checkPlatformAnnotation.acceptedValues | list | `["sulfoxide","sulfone","amide","alkene","carboxlic-acid"]` | The correct platform value |
+| policies.checkPlatformAnnotation | object | `{"acceptedValues":["sulfoxide","sulfone","nitroso","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}}` | Check if platform annotation (atomi.cloud/platform) value is correct |
+| policies.checkPlatformAnnotation.acceptedValues | list | `["sulfoxide","sulfone","nitroso","amide","alkene","carboxlic-acid"]` | The correct platform value |
 | policies.checkPlatformAnnotation.enable | bool | `true` | Enable this policy |
 | policies.checkPlatformAnnotation.exclude | object | `{"names":["*-cleanup-controller-*"]}` | Exclusion rules |
-| policies.checkPlatformLabel | object | `{"acceptedValues":["sulfoxide","sulfone","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}}` | Check if platform label (atomi.cloud/platform) value is correct |
-| policies.checkPlatformLabel.acceptedValues | list | `["sulfoxide","sulfone","amide","alkene","carboxlic-acid"]` | The correct platform value |
+| policies.checkPlatformLabel | object | `{"acceptedValues":["sulfoxide","sulfone","nitroso","amide","alkene","carboxlic-acid"],"enable":true,"exclude":{"names":["*-cleanup-controller-*"]}}` | Check if platform label (atomi.cloud/platform) value is correct |
+| policies.checkPlatformLabel.acceptedValues | list | `["sulfoxide","sulfone","nitroso","amide","alkene","carboxlic-acid"]` | The correct platform value |
 | policies.checkPlatformLabel.enable | bool | `true` | Enable this policy |
 | policies.checkPlatformLabel.exclude | object | `{"names":["*-cleanup-controller-*"]}` | Exclusion rules |
 | policies.disableCriSockMount | object | `{"enable":true,"exclude":{}}` | Prevent CRI Sock Mount |

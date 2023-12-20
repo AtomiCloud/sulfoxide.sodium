@@ -95,6 +95,7 @@ landscape: &landscape lapras
 platforms: &platforms
   - sulfoxide
   - sulfone
+  - nitroso
   - amide
   - alkene
   - carboxlic-acid
