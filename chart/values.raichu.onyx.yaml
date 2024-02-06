@@ -1,6 +1,6 @@
 serviceTree:
-  landscape: &landscape pikachu
-  cluster: opal
+  landscape: &landscape raichu
+  cluster: onyx
 
 
 commonExclude:

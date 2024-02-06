@@ -1,13 +1,13 @@
 serviceTree:
-  landscape: &landscape pikachu
-  cluster: opal
-
+  landscape: &landscape pichu
+  cluster: onyx
 
 commonExclude:
   annotations: &annotationExclude
     - "*-cleanup-controller-*"
   labels: &labelExclude
     - "*-cleanup-controller-*"
+    - "*-silicon-*"
     - "tin-livecache*"
 
 globalExcludedNamespace: &globalExcludedNamespace

@@ -3,11 +3,12 @@ serviceTree:
   cluster: opal
 
 commonExclude:
-  annotaions: &annotationExclude
+  annotations: &annotationExclude
     - "*-cleanup-controller-*"
   labels: &labelExclude
     - "*-cleanup-controller-*"
     - "*-silicon-*"
+    - "tin-livecache*"
 
 globalExcludedNamespace: &globalExcludedNamespace
   - kube-system

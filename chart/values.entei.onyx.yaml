@@ -1,17 +1,20 @@
 serviceTree:
-  landscape: &landscape pikachu
-  cluster: opal
+  landscape: &landscape entei
+  cluster: onyx
 
 
 commonExclude:
-  annotations: &annotationExclude
+  annotaions: &annotationExclude
     - "*-cleanup-controller-*"
   labels: &labelExclude
     - "*-cleanup-controller-*"
-    - "tin-livecache*"
+    - "*-silicon-*"
 
 globalExcludedNamespace: &globalExcludedNamespace
   - kube-system
+  - pichu
+  - pikachu
+  - raichu
 
 kyverno-policies:
   podSecurityStandard: baseline
@@ -75,15 +78,30 @@ kyverno-policies:
             namespaces:
               - sulfoxide
             names:
+              - "*-container-logs-collector*"
               - "*-otel*"
+              - "*ingress-nginx-controller*"
+              - "*-target-allocator-targetallocator-*"
     require-run-as-non-root-user:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
+              - "*-target-allocator-targetallocator-*"
     require-run-as-nonroot:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
+              - "*-target-allocator-targetallocator-*"
     restrict-seccomp-strict:
       any:
         - resources:
@@ -92,7 +110,11 @@ kyverno-policies:
       any:
         - resources:
             namespaces: *globalExcludedNamespace
-
+        - resources:
+            namespaces:
+              - sulfoxide
+            names:
+              - "*-container-logs-collector*"
 policies:
   requireAtomiCloudAnnotations:
     exclude:
