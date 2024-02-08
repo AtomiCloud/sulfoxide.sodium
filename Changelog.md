@@ -1,3 +1,15 @@
+## [1.7.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.6.0...v1.7.0) (2024-02-08)
+
+
+### 🚀 New Features
+
+* onyx cluster ([4828d5f](https://github.com/AtomiCloud/sulfoxide.sodium/commit/4828d5fc5a81211177fc20ad739851fd5424451e))
+
+
+### 🐛 Bug Fixes
+
+* releaser ([46baf30](https://github.com/AtomiCloud/sulfoxide.sodium/commit/46baf30634094630fc43a15f6d0c0eb44ec7dbde))
+
 ## [1.6.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.5.0...v1.6.0) (2023-12-20)
 
 

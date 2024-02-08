@@ -2,7 +2,7 @@ apiVersion: v2
 name: atomi-policies
 description: Chart to install AtomiCloud's Cluster Policies
 type: application
-version: 1.6.0
+version: 1.7.0
 appVersion: "3.1.0"
 dependencies:
   - name: kyverno-policies
