@@ -1,3 +1,10 @@
+## [1.9.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.8.0...v1.9.0) (2024-08-11)
+
+
+### 🚀 New Features
+
+* new values file for pichu, pikachu & raichu under topaz & amber ([c596d34](https://github.com/AtomiCloud/sulfoxide.sodium/commit/c596d345965ab2c2da8d962b5c756268901faf16))
+
 ## [1.8.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.7.0...v1.8.0) (2024-08-11)
 
 
