@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.7.0...v1.8.0) (2024-08-11)
+
+
+### 📦 Upstreams Changes
+
+* upgrade nix, helm upstream, GHA ([a07d041](https://github.com/AtomiCloud/sulfoxide.sodium/commit/a07d04183c2d0eef9b153e5533ffa1e0fc6dd430))
+
 ## [1.7.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.6.0...v1.7.0) (2024-02-08)
 
 
