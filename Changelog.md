@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.9.0...v1.10.0) (2024-08-17)
+
+
+### 🚀 New Features
+
+* remove onyx ([dafd041](https://github.com/AtomiCloud/sulfoxide.sodium/commit/dafd041c09ef9f5a878b98f5b881060572d35292))
+
 ## [1.9.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.8.0...v1.9.0) (2024-08-11)
 
 
