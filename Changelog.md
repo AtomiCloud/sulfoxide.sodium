@@ -1,3 +1,10 @@
+## [1.11.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.10.0...v1.11.0) (2024-08-28)
+
+
+### 🚀 New Features
+
+* values for mica & talc ([01c8551](https://github.com/AtomiCloud/sulfoxide.sodium/commit/01c8551ae5273d8e63db7f948763b5ce8e3ac90e))
+
 ## [1.10.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.9.0...v1.10.0) (2024-08-17)
 
 
