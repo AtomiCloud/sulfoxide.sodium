@@ -1,3 +1,10 @@
+## [1.12.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.11.0...v1.12.0) (2024-10-02)
+
+
+### 📦 Upstreams Changes
+
+* **atominix:** ugrading to 28.0.0 ([1ad7c0c](https://github.com/AtomiCloud/sulfoxide.sodium/commit/1ad7c0c38e079e49089f454df17277b2f4adf7f0))
+
 ## [1.11.0](https://github.com/AtomiCloud/sulfoxide.sodium/compare/v1.10.0...v1.11.0) (2024-08-28)
 
 
