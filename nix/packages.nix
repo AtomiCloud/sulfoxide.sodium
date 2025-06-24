@@ -1,38 +1,38 @@
-{ pkgs, atomi, pkgs-240810 }:
+{ pkgs, atomi, pkgs-2505, pkgs-unstable }:
 let
 
-  all = {
+  all = rec {
     atomipkgs = (
       with atomi;
-      {
+      rec {
+        helmlint = atomi.helmlint.override { helmPackage = infrautils; };
+
         inherit
+          atomiutils
+          infrautils
+          infralint
           pls
           sg;
       }
     );
-    pkgs240810 = (
-      with pkgs-240810;
+    nix-unstable = (
+      with pkgs-unstable;
+      { }
+    );
+    nix-2505 = (
+      with pkgs-2505;
       {
         inherit
-          coreutils
-          sd
-          bash
           git
-          jq
-          yq-go
 
           # lint
           treefmt
           infisical
 
           # infra
-          k3d
-          helm-docs
-          kubectl
           gitlint
           shellcheck
           ;
-        helm = kubernetes-helm;
 
       }
     );
@@ -40,4 +40,5 @@ let
 in
 with all;
 atomipkgs //
-pkgs240810
+nix-2505 //
+nix-unstable

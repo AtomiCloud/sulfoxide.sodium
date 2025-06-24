@@ -99,6 +99,7 @@ platforms: &platforms
   - amide
   - alkene
   - carboxlic-acid
+  - alcohol
 
 commonExclude:
   annotaions: &annotationExclude

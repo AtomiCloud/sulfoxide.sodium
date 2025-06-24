@@ -50,19 +50,19 @@ plugins:
 # Helm
 types:
   - type: upstream
-    desc: "Changes from dependencies upstream"
+    desc: 'Changes from dependencies upstream'
     section: 📦 Upstreams Changes
     scopes:
       default:
         desc: Generic update from upstream dependencies
-        release: "minor"
+        release: 'minor'
     vae:
       verb: update upstream
       application: <scope>, <title>
-      example: "upstream(mysql): from v5.7 to v8.0"
+      example: 'upstream(mysql): from v5.7 to v8.0'
 
   - type: config
-    desc: "Changes to configuration files and scripts"
+    desc: 'Changes to configuration files and scripts'
     scopes:
       default:
         desc: Updates the configuration of the repository, not related to the other scopes
@@ -91,7 +91,7 @@ types:
     vae:
       verb: configure
       application: <scope> to <title>
-      example: "config(ci): setup nix before executing"
+      example: 'config(ci): setup nix before executing'
 
   - type: release
     desc: Initiate a release (machine initiated)
@@ -110,14 +110,14 @@ types:
     vae:
       verb: add
       application: <scope> documention <title>
-      example: "docs(developer): on how to install dependency packages"
+      example: 'docs(developer): on how to install dependency packages'
   - type: feat
     section: 🚀 New Features
     desc: A new feature
     vae:
       verb: add
       application: <scope> <title>
-      example: "feat(rapid): new withdraw api"
+      example: 'feat(rapid): new withdraw api'
     scopes:
       default:
         desc: Release a new features
@@ -134,7 +134,7 @@ types:
     vae:
       verb: fix
       application: <title>
-      example: "fix(rapid): deposit api for rapid"
+      example: 'fix(rapid): deposit api for rapid'
     scopes:
       default:
         desc: Generic fixes

@@ -2,11 +2,7 @@
 with packages;
 {
   system = [
-    coreutils
-    sd
-    bash
-    jq
-    yq-go
+    atomiutils
   ];
 
   dev = [
@@ -15,9 +11,7 @@ with packages;
   ];
 
   infra = [
-    k3d
-    helm
-    kubectl
+    infrautils
   ];
 
   main = [
@@ -26,8 +20,7 @@ with packages;
   lint = [
     # core
     treefmt
-
-    helm-docs
+    infralint
 
     gitlint
     shellcheck
